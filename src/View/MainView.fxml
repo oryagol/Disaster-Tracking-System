@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="menuScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
+         <center>
+            <AnchorPane prefHeight="450.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="732.0" layoutY="13.0" prefHeight="519.0" prefWidth="168.0">
+                     <children>
+                        <ToggleButton fx:id="missingListBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Missing Person List" textAlignment="RIGHT">
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                                 <image>
+                                    <Image url="@Icons/curriculum.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="foundListBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Found Person List" textAlignment="RIGHT">
+                           <padding>
+                              <Insets bottom="40.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                                 <image>
+                                    <Image url="@Icons/lightbulb.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="submitBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Sumbit Missing Person" textAlignment="RIGHT">
+                           <padding>
+                              <Insets bottom="40.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                                 <image>
+                                    <Image url="@Icons/resume.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="importBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Import Found Person" textAlignment="RIGHT">
+                           <padding>
+                              <Insets bottom="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                                 <image>
+                                    <Image url="@Icons/import.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                        <ToggleButton fx:id="exitBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Exit" textAlignment="RIGHT">
+                           <padding>
+                              <Insets bottom="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true" translateY="38.0">
+                                 <image>
+                                    <Image url="@Icons/iconfinder_error_1646012.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </ToggleButton>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>
