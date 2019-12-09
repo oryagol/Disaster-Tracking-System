@@ -10,16 +10,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView">
    <children>
-      <BorderPane fx:id="menuScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
+      <BorderPane fx:id="menuScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Icons/MainView.css">
          <center>
-            <AnchorPane prefHeight="450.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="AnchorPane" stylesheets="@Icons/MainView.css" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="732.0" layoutY="13.0" prefHeight="519.0" prefWidth="168.0">
+                  <VBox layoutY="27.0" prefHeight="519.0" prefWidth="168.0">
                      <children>
-                        <ToggleButton fx:id="missingListBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Missing Person List" textAlignment="RIGHT">
+                        <ToggleButton fx:id="missingListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#missingList" prefHeight="78.0" prefWidth="155.0" styleClass="dark-blue" text="Missing Person List" textAlignment="RIGHT">
                            <VBox.margin>
                               <Insets left="25.0" top="25.0" />
                            </VBox.margin>
@@ -30,14 +29,14 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                              <ImageView fitHeight="43.0" fitWidth="50.0" translateY="38.0">
                                  <image>
-                                    <Image url="@Icons/curriculum.png" />
+                                    <Image url="@Icons/active-search-2-64.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="foundListBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Found Person List" textAlignment="RIGHT">
+                        <ToggleButton fx:id="foundListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#foundList" prefHeight="79.0" prefWidth="147.0" styleClass="dark-blue" text="Found Person List" textAlignment="RIGHT">
                            <padding>
                               <Insets bottom="40.0" />
                            </padding>
@@ -48,14 +47,14 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                              <ImageView fitHeight="51.0" fitWidth="55.0" translateY="38.0">
                                  <image>
-                                    <Image url="@Icons/lightbulb.png" />
+                                    <Image url="@Icons/light-bulb-2-64.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="submitBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Sumbit Missing Person" textAlignment="RIGHT">
+                        <ToggleButton fx:id="submitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitForm" prefHeight="79.0" prefWidth="147.0" styleClass="dark-blue" text="Sumbit Missing Person" textAlignment="RIGHT">
                            <padding>
                               <Insets bottom="40.0" />
                            </padding>
@@ -66,14 +65,14 @@
                               <Font size="11.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                              <ImageView fitHeight="48.0" fitWidth="41.0" translateY="38.0">
                                  <image>
-                                    <Image url="@Icons/resume.png" />
+                                    <Image url="@Icons/edit-11-64.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="importBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Import Found Person" textAlignment="RIGHT">
+                        <ToggleButton fx:id="importBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#importData" prefHeight="80.0" prefWidth="147.0" styleClass="dark-blue" text="Import Found Person" textAlignment="RIGHT">
                            <padding>
                               <Insets bottom="40.0" />
                            </padding>
@@ -84,14 +83,14 @@
                               <Insets left="25.0" top="25.0" />
                            </VBox.margin>
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" translateY="38.0">
+                              <ImageView fitHeight="48.0" fitWidth="49.0" translateY="38.0">
                                  <image>
-                                    <Image url="@Icons/import.png" />
+                                    <Image url="@Icons/data-transfer-download-64.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="exitBtn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="120.0" text="Exit" textAlignment="RIGHT">
+                        <ToggleButton fx:id="exitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" prefHeight="80.0" prefWidth="158.0" styleClass="dark-blue" text="Exit" textAlignment="RIGHT">
                            <padding>
                               <Insets bottom="40.0" />
                            </padding>
@@ -102,9 +101,9 @@
                               <Insets left="25.0" top="25.0" />
                            </VBox.margin>
                            <graphic>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true" translateY="38.0">
+                              <ImageView fitHeight="46.0" fitWidth="45.0" translateY="38.0">
                                  <image>
-                                    <Image url="@Icons/iconfinder_error_1646012.png" />
+                                    <Image url="@Icons/x-mark-4-64.png" />
                                  </image>
                               </ImageView>
                            </graphic>
