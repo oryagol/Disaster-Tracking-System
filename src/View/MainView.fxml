@@ -12,18 +12,18 @@
 
 <StackPane stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView">
    <children>
-      <BorderPane fx:id="menuScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Icons/MainView.css">
+      <BorderPane fx:id="borderMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@Icons/MainView.css">
          <center>
-            <AnchorPane prefHeight="450.0" prefWidth="600.0" styleClass="AnchorPane" stylesheets="@Icons/MainView.css" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="menuScreen" prefHeight="450.0" prefWidth="600.0" styleClass="AnchorPane" stylesheets="@Icons/MainView.css" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutY="27.0" prefHeight="519.0" prefWidth="168.0">
+                  <VBox prefHeight="519.0" prefWidth="168.0">
                      <children>
-                        <ToggleButton fx:id="missingListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#missingList" prefHeight="78.0" prefWidth="155.0" styleClass="dark-blue" text="Missing Person List" textAlignment="RIGHT">
+                        <ToggleButton fx:id="missingListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#missingList" prefHeight="115.0" prefWidth="143.0" styleClass="dark-blue" text="Missing Person List" textAlignment="RIGHT">
                            <VBox.margin>
                               <Insets left="25.0" top="25.0" />
                            </VBox.margin>
                            <padding>
-                              <Insets bottom="40.0" />
+                              <Insets bottom="45.0" />
                            </padding>
                            <font>
                               <Font size="11.0" />
@@ -35,10 +35,13 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                         </ToggleButton>
-                        <ToggleButton fx:id="foundListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#foundList" prefHeight="79.0" prefWidth="147.0" styleClass="dark-blue" text="Found Person List" textAlignment="RIGHT">
+                        <ToggleButton fx:id="foundListBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#foundList" prefHeight="115.0" prefWidth="143.0" styleClass="dark-blue" text="Found Person List" textAlignment="RIGHT">
                            <padding>
-                              <Insets bottom="40.0" />
+                              <Insets bottom="45.0" />
                            </padding>
                            <VBox.margin>
                               <Insets left="25.0" top="25.0" />
@@ -54,9 +57,9 @@
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="submitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitForm" prefHeight="79.0" prefWidth="147.0" styleClass="dark-blue" text="Sumbit Missing Person" textAlignment="RIGHT">
+                        <ToggleButton fx:id="submitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submitForm" prefHeight="115.0" prefWidth="143.0" styleClass="dark-blue" text="Sumbit Missing Person" textAlignment="RIGHT">
                            <padding>
-                              <Insets bottom="40.0" />
+                              <Insets bottom="45.0" />
                            </padding>
                            <VBox.margin>
                               <Insets left="25.0" top="25.0" />
@@ -72,9 +75,9 @@
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="importBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#importData" prefHeight="80.0" prefWidth="147.0" styleClass="dark-blue" text="Import Found Person" textAlignment="RIGHT">
+                        <ToggleButton fx:id="importBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#importData" prefHeight="115.0" prefWidth="143.0" styleClass="dark-blue" text="Import Found Person" textAlignment="RIGHT">
                            <padding>
-                              <Insets bottom="40.0" />
+                              <Insets bottom="45.0" />
                            </padding>
                            <font>
                               <Font size="11.0" />
@@ -90,9 +93,9 @@
                               </ImageView>
                            </graphic>
                         </ToggleButton>
-                        <ToggleButton fx:id="exitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" prefHeight="80.0" prefWidth="158.0" styleClass="dark-blue" text="Exit" textAlignment="RIGHT">
+                        <ToggleButton fx:id="exitBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit" prefHeight="115.0" prefWidth="143.0" styleClass="dark-blue" text="Exit" textAlignment="RIGHT">
                            <padding>
-                              <Insets bottom="40.0" />
+                              <Insets bottom="45.0" />
                            </padding>
                            <font>
                               <Font size="11.0" />
@@ -110,6 +113,7 @@
                         </ToggleButton>
                      </children>
                   </VBox>
+                  <AnchorPane fx:id="subScreen" layoutX="177.0" layoutY="32.0" prefHeight="560.0" prefWidth="711.0" />
                </children>
             </AnchorPane>
          </center>
