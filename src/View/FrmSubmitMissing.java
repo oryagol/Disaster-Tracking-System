@@ -3,6 +3,8 @@ package View;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,10 +58,25 @@ public class FrmSubmitMissing {
 	final FileChooser fileChooser = new FileChooser();
 
 	private File image;
-
+	
+	// get the details of form and submit to system
+	// need to add -> check that input is valid
 	@FXML
 	void submit(ActionEvent event) {
-		String id = missID.getText();
+		String firstName = missFirstName.getText();
+		String lastName = missLastName.getText();
+		int id = Integer.parseInt(missID.getText());
+		String sFirstName = searchFirstName.getText();
+		String sLastName = searchLastName.getText();
+		int sId = Integer.parseInt(searchID.getText());
+		String sEmail = searchEmail.getText();
+		String sPhone = searchPhone.getText();
+		String info = moreInfo.getText();
+		Calendar d = Calendar.getInstance();
+		d.clear();
+		LocalDate thisDate = date.getValue();
+		d.set(thisDate.getYear(), thisDate.getMonthValue(), thisDate.getDayOfMonth());
+		
 		if(image != null)
 		{
 			File toFile = new File("src/View/Photos/"+id);

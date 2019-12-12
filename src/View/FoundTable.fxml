@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="643.0" stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FoundTable">
+   <children>
+      <TableView layoutX="-1.0" layoutY="35.0" prefHeight="431.0" prefWidth="641.0">
+        <columns>
+          <TableColumn fx:id="fName" prefWidth="70.0" text="First Name" />
+          <TableColumn fx:id="lName" prefWidth="70.0" text="Last Name" />
+            <TableColumn fx:id="ID" prefWidth="20.0" text="ID" />
+            <TableColumn fx:id="loca" prefWidth="60.0" text="Location" />
+            <TableColumn fx:id="fFName" prefWidth="71.0" text="First Name" />
+            <TableColumn fx:id="fLName" prefWidth="66.0" text="Last Name" />
+            <TableColumn fx:id="fID" prefWidth="27.0" text="ID" />
+            <TableColumn fx:id="fEmail" prefWidth="48.0" text="Email" />
+            <TableColumn fx:id="fPhone" prefWidth="45.0" text="Phone" />
+            <TableColumn fx:id="moreInfo" prefWidth="69.0" text="More Info" />
+            <TableColumn fx:id="date" prefWidth="39.0" text="Date" />
+        </columns>
+      </TableView>
+      <Text layoutX="-19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="167.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Finder Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+   </children>
+</AnchorPane>

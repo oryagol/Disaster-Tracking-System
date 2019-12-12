@@ -23,7 +23,6 @@ public class MainView {
     @FXML
     private AnchorPane menuScreen;
     
-
     @FXML
     private AnchorPane subScreen;
 
@@ -72,10 +71,28 @@ public class MainView {
 	}
 
 	public void foundList(ActionEvent event) {
-
+		try {
+			AnchorPane pane=FXMLLoader.load(getClass().getResource("FoundTable.fxml"));
+			pane.setPrefSize(subScreen.getWidth(), subScreen.getHeight());
+			subScreen.getChildren().removeAll(subScreen.getChildren());
+			subScreen.getChildren().add(pane);
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void missingList(ActionEvent event) {
-
+		try {
+			AnchorPane pane=FXMLLoader.load(getClass().getResource("MissingTable.fxml"));
+			pane.setPrefSize(subScreen.getWidth(), subScreen.getHeight());
+			subScreen.getChildren().removeAll(subScreen.getChildren());
+			subScreen.getChildren().add(pane);
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
