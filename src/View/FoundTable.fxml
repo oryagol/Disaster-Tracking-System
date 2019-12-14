@@ -9,20 +9,19 @@
    <children>
       <TableView layoutX="-1.0" layoutY="35.0" prefHeight="431.0" prefWidth="641.0">
         <columns>
-          <TableColumn fx:id="fName" prefWidth="70.0" text="First Name" />
-          <TableColumn fx:id="lName" prefWidth="70.0" text="Last Name" />
-            <TableColumn fx:id="ID" prefWidth="20.0" text="ID" />
-            <TableColumn fx:id="loca" prefWidth="60.0" text="Location" />
-            <TableColumn fx:id="fFName" prefWidth="71.0" text="First Name" />
-            <TableColumn fx:id="fLName" prefWidth="66.0" text="Last Name" />
-            <TableColumn fx:id="fID" prefWidth="27.0" text="ID" />
-            <TableColumn fx:id="fEmail" prefWidth="48.0" text="Email" />
-            <TableColumn fx:id="fPhone" prefWidth="45.0" text="Phone" />
-            <TableColumn fx:id="moreInfo" prefWidth="69.0" text="More Info" />
-            <TableColumn fx:id="date" prefWidth="39.0" text="Date" />
+          <TableColumn fx:id="fName" prefWidth="70.0" text="Name" />
+            <TableColumn fx:id="height" prefWidth="51.0" text="Height" />
+            <TableColumn fx:id="weight" prefWidth="52.0" text="Weight" />
+            <TableColumn fx:id="ID" prefWidth="26.0" text="ID" />
+            <TableColumn fx:id="loca" prefWidth="55.0" text="Location" />
+            <TableColumn fx:id="fFName" prefWidth="74.0" text="Name" />
+            <TableColumn fx:id="fID" prefWidth="38.0" text="ID" />
+            <TableColumn fx:id="fEmail" prefWidth="40.0" text="Email" />
+            <TableColumn fx:id="fPhone" prefWidth="53.0" text="Phone" />
+            <TableColumn fx:id="date" prefWidth="115.0" text="Date Of Find" />
         </columns>
       </TableView>
       <Text layoutX="-19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
-      <Text layoutX="167.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Finder Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="214.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Finder Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
    </children>
 </AnchorPane>

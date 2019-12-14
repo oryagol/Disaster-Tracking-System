@@ -8,38 +8,35 @@ import javafx.scene.control.TableColumn;
 
 public class FoundTable {
 
-    @FXML
-    private TableColumn<?, ?> fName;
+	  @FXML
+	    private TableColumn<?, ?> fName;
 
-    @FXML
-    private TableColumn<?, ?> lName;
+	    @FXML
+	    private TableColumn<?, ?> height;
 
-    @FXML
-    private TableColumn<?, ?> ID;
+	    @FXML
+	    private TableColumn<?, ?> weight;
 
-    @FXML
-    private TableColumn<?, ?> loca;
+	    @FXML
+	    private TableColumn<?, ?> ID;
 
-    @FXML
-    private TableColumn<?, ?> fFName;
+	    @FXML
+	    private TableColumn<?, ?> loca;
 
-    @FXML
-    private TableColumn<?, ?> fLName;
+	    @FXML
+	    private TableColumn<?, ?> fFName;
 
-    @FXML
-    private TableColumn<?, ?> fID;
+	    @FXML
+	    private TableColumn<?, ?> fID;
 
-    @FXML
-    private TableColumn<?, ?> fEmail;
+	    @FXML
+	    private TableColumn<?, ?> fEmail;
 
-    @FXML
-    private TableColumn<?, ?> fPhone;
+	    @FXML
+	    private TableColumn<?, ?> fPhone;
 
-    @FXML
-    private TableColumn<?, ?> moreInfo;
-
-    @FXML
-    private TableColumn<?, ?> date;
+	    @FXML
+	    private TableColumn<?, ?> date;
     
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		

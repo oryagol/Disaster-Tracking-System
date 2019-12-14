@@ -10,38 +10,42 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
 public class MissingTable {
-    @FXML
-    private TableColumn<?, ?> fName;
+	
+	  @FXML
+	    private TableColumn<?, ?> fName;
 
-    @FXML
-    private TableColumn<?, ?> lName;
+	    @FXML
+	    private TableColumn<?, ?> ID;
 
-    @FXML
-    private TableColumn<?, ?> ID;
+	    @FXML
+	    private TableColumn<?, ?> height;
 
-    @FXML
-    private TableColumn<?, ?> photo;
+	    @FXML
+	    private TableColumn<?, ?> weight;
 
-    @FXML
-    private TableColumn<?, ?> sFName;
+	    @FXML
+	    private TableColumn<?, ?> photo;
 
-    @FXML
-    private TableColumn<?, ?> sLName;
+	    @FXML
+	    private TableColumn<?, ?> sFName;
 
-    @FXML
-    private TableColumn<?, ?> sID;
+	    @FXML
+	    private TableColumn<?, ?> sID;
 
-    @FXML
-    private TableColumn<?, ?> sEmail;
+	    @FXML
+	    private TableColumn<?, ?> sEmail;
 
-    @FXML
-    private TableColumn<?, ?> sPhone;
+	    @FXML
+	    private TableColumn<?, ?> sPhone;
 
-    @FXML
-    private TableColumn<?, ?> moreInfo;
+	    @FXML
+	    private TableColumn<?, ?> date;
 
-    @FXML
-    private TableColumn<?, ?> date;
+	    @FXML
+	    private TableColumn<?, ?> found;
+
+	    @FXML
+	    private TableColumn<?, ?> dateFound;
     
 	
 	public void initialize(URL arg0, ResourceBundle arg1) {

@@ -3,6 +3,8 @@ package View;
 import java.io.IOException;
 import java.util.Optional;
 
+import Controller.MainController;
+import Model.SysData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,16 +17,16 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainView {
-	
+
 	public static Stage stage = new Stage();
 	@FXML
 	private BorderPane borderMain;
-	
-    @FXML
-    private AnchorPane menuScreen;
-    
-    @FXML
-    private AnchorPane subScreen;
+
+	@FXML
+	private AnchorPane menuScreen;
+
+	@FXML
+	private AnchorPane subScreen;
 
 	@FXML
 	private ToggleButton missingListBtn;
@@ -40,9 +42,11 @@ public class MainView {
 
 	@FXML
 	private ToggleButton exitBtn;
-	
-	
 
+	private MainController control = new MainController();
+
+
+	//exit from system
 	public void exit(ActionEvent event) {
 		Alert al = new Alert(Alert.AlertType.CONFIRMATION);
 		al.setHeaderText("Are You Sure You Want To Exit From The System?");
@@ -52,11 +56,35 @@ public class MainView {
 		if(result.get() == ButtonType.OK)
 			System.exit(0);
 	}
-
+	//import the found person from other systems and checks for a match
 	public void importData(ActionEvent event) {
+		Alert al = new Alert(Alert.AlertType.INFORMATION);
+		if(SysData.readLostPersonList()) {
+			al.setHeaderText("Imported Successfully");
+			al.setTitle("System Messege");
+			al.setResizable(false);
+			SysData.saveDataBase();
+			int count = control.syncLists();
+			Alert al1 = new Alert(Alert.AlertType.INFORMATION);
+			if(count == 0) {
+				al1.setHeaderText("Matches Not Found");
+				al1.setTitle("System Messege");
+				al1.setResizable(false);
+			}
+			else {
+				al1.setHeaderText("Found "+count+"Matches!");
+				al1.setTitle("System Messege");
+				al1.setResizable(false);
+			}
+		}
+		else {
+			al.setHeaderText("Import failed");
+			al.setTitle("System Messege");
+			al.setResizable(false);
+		}
 
 	}
-	
+	//a page that the user can submit a form of missing person
 	public void submitForm(ActionEvent event) {
 		try {
 			AnchorPane pane=FXMLLoader.load(getClass().getResource("FrmSubmitMissing.fxml"));
@@ -69,7 +97,7 @@ public class MainView {
 			e.printStackTrace();
 		}
 	}
-
+	//show the found person list
 	public void foundList(ActionEvent event) {
 		try {
 			AnchorPane pane=FXMLLoader.load(getClass().getResource("FoundTable.fxml"));
@@ -82,7 +110,7 @@ public class MainView {
 			e.printStackTrace();
 		}
 	}
-
+	//show the missing person list
 	public void missingList(ActionEvent event) {
 		try {
 			AnchorPane pane=FXMLLoader.load(getClass().getResource("MissingTable.fxml"));

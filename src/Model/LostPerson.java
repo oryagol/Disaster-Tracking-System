@@ -1,66 +1,59 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class LostPerson {
-	private String firstName;
-	private String LastName;
-	private String Phone;
-	private String Email;
+public class LostPerson implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
 	private String ImgURL;
-	private String id;
+	private Integer id;
 	private Calendar missingReportDate;
-	private String additionalInfo;
-	private String Height;
-	private String Weight;
+	private Double Height;
+	private Double Weight;
 	private Finder foundedBy;
+	private Searcher searchBy;
 	private Calendar DateFound;
-	
-	
+	private String discription;
+
+
 	public LostPerson(Finder foundedBy) {
 		super();
 		this.foundedBy = foundedBy;
 	}
-
-
-	public LostPerson(String name, String phone, String email, String imgURL, String id, Calendar missingReportDate,
-			String additionalInfo, String height, String weight, Finder foundedBy) {
+	
+	public LostPerson(Searcher searchBy) {
 		super();
-		firstName = name;
-		Phone = phone;
-		Email = email;
-		ImgURL = imgURL;
+		this.searchBy = searchBy;
+	}
+
+	public LostPerson(String name, String imgURL, int id, Calendar missingReportDate
+			, Double height, Double weight, Finder foundedBy, Searcher searcher ,String discription) {
+		super();
+		this.name = name;
+		this.ImgURL = imgURL;
 		this.id = id;
 		this.missingReportDate = missingReportDate;
-		this.additionalInfo = additionalInfo;
 		Height = height;
 		Weight = weight;
 		this.foundedBy = foundedBy;
+		this.searchBy = searcher;
+		this.discription = discription;
+		
 	}
 
 
 	public String getName() {
-		return firstName;
+		return name;
 	}
 
 
-	public String getFirstName() {
-		return firstName;
-	}
 
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-	public String getLastName() {
-		return LastName;
-	}
-
-
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
@@ -74,31 +67,6 @@ public class LostPerson {
 	}
 
 
-	public void setName(String name) {
-		firstName = name;
-	}
-
-
-	public String getPhone() {
-		return Phone;
-	}
-
-
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
-
-
-	public String getEmail() {
-		return Email;
-	}
-
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
-
 	public String getImgURL() {
 		return ImgURL;
 	}
@@ -109,12 +77,12 @@ public class LostPerson {
 	}
 
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -129,32 +97,23 @@ public class LostPerson {
 	}
 
 
-	public String getAdditionalInfo() {
-		return additionalInfo;
-	}
 
-
-	public void setAdditionalInfo(String additionalInfo) {
-		this.additionalInfo = additionalInfo;
-	}
-
-
-	public String getHeight() {
+	public double getHeight() {
 		return Height;
 	}
 
 
-	public void setHeight(String height) {
+	public void setHeight(double height) {
 		Height = height;
 	}
 
 
-	public String getWeight() {
+	public double getWeight() {
 		return Weight;
 	}
 
 
-	public void setWeight(String weight) {
+	public void setWeight(double weight) {
 		Weight = weight;
 	}
 
@@ -171,16 +130,45 @@ public class LostPerson {
 
 	@Override
 	public String toString() {
-		return "LostPerson [firstName=" + firstName + ", LastName=" + LastName + ", Phone=" + Phone + ", Email=" + Email
-				+ ", ImgURL=" + ImgURL + ", id=" + id + ", missingReportDate=" + missingReportDate + ", additionalInfo="
-				+ additionalInfo + ", Height=" + Height + ", Weight=" + Weight + ", foundedBy=" + foundedBy
-				+ ", DateFound=" + DateFound + "]";
+		return "LostPerson [name=" + name + ", ImgURL=" + ImgURL + ", id=" + id + ", missingReportDate="
+				+ missingReportDate + ", Height=" + Height + ", Weight=" + Weight + ", foundedBy=" + foundedBy
+				+ ", searchBy=" + searchBy + ", DateFound=" + DateFound + ", discription=" + discription + "]";
 	}
+
+	public Searcher getSearchBy() {
+		return searchBy;
+	}
+
+	public void setSearchBy(Searcher searchBy) {
+		this.searchBy = searchBy;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setHeight(Double height) {
+		Height = height;
+	}
+
+	public void setWeight(Double weight) {
+		Weight = weight;
+	}
+
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
+
 	
 	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }

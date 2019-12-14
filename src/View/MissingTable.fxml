@@ -9,20 +9,21 @@
    <children>
       <TableView layoutX="-1.0" layoutY="35.0" prefHeight="431.0" prefWidth="641.0">
         <columns>
-          <TableColumn fx:id="fName" prefWidth="70.0" text="First Name" />
-          <TableColumn fx:id="lName" prefWidth="70.0" text="Last Name" />
-            <TableColumn fx:id="ID" prefWidth="20.0" text="ID" />
-            <TableColumn fx:id="photo" prefWidth="40.0" text="Photo" />
-            <TableColumn fx:id="sFName" prefWidth="70.0" text="First Name" />
-            <TableColumn fx:id="sLName" prefWidth="70.0" text="Last Name" />
-            <TableColumn fx:id="sID" prefWidth="30.0" text="ID" />
-            <TableColumn fx:id="sEmail" prefWidth="45.0" text="Email" />
-            <TableColumn fx:id="sPhone" prefWidth="50.0" text="Phone" />
-            <TableColumn fx:id="moreInfo" prefWidth="62.0" text="More Info" />
-            <TableColumn fx:id="date" prefWidth="45.0" text="Date" />
+          <TableColumn fx:id="fName" prefWidth="65.0" text="Name" />
+            <TableColumn fx:id="ID" prefWidth="32.0" text="ID" />
+            <TableColumn fx:id="height" prefWidth="45.0" text="Height" />
+            <TableColumn fx:id="weight" prefWidth="50.0" text="Weight" />
+            <TableColumn fx:id="photo" prefWidth="41.0" text="Photo" />
+            <TableColumn fx:id="sFName" prefWidth="54.0" text="Name" />
+            <TableColumn fx:id="sID" prefWidth="35.0" text="ID" />
+            <TableColumn fx:id="sEmail" minWidth="0.0" prefWidth="61.0" text="Email" />
+            <TableColumn fx:id="sPhone" prefWidth="51.0" text="Phone" />
+            <TableColumn fx:id="date" prefWidth="86.0" text="Report Date" />
+            <TableColumn fx:id="found" prefWidth="58.0" text="Found By" />
+            <TableColumn fx:id="dateFound" prefWidth="62.0" text="Date Found" />
         </columns>
       </TableView>
-      <Text layoutX="-19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
-      <Text layoutX="156.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Searcher Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="-16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="193.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Searcher Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
    </children>
 </AnchorPane>
