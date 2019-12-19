@@ -5,6 +5,7 @@ import java.util.Calendar;
 import Model.Finder;
 import Model.HairColor;
 
+// a class that describe a record in the missing person table
 public class MissingTableRecord {
 		
 		private String Name;

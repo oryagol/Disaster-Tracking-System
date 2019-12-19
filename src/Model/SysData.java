@@ -32,7 +32,7 @@ public class SysData implements Serializable {
 		findByName = new HashMap<>();
 		findById = new HashMap<>();
 	}
-
+	// singelton
 	public static SysData getInstance() {
 		if(database == null) 
 			database = new SysData();
@@ -58,21 +58,21 @@ public class SysData implements Serializable {
 	public  HashMap<Integer, LostPerson> getFindById() {
 		return findById;
 	}
-
+	//add a missing person from the form to the db
 	public  void  addMissingForm(LostPerson lp)
 	{
 		missingSearched.add(lp);
 		findByName.put(lp.getName(), lp);
 		findById.put(lp.getId(), lp);
 	}
-
+	// remove a missing person from the db
 	public  void  removeMissingForm(LostPerson lp)
 	{
 		missingSearched.remove(lp);
 		findByName.remove(lp.getName());
 		findById.remove(lp.getId());
 	}
-
+	// save the database
 	public static boolean saveDataBase(String fileName) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(fileName);
@@ -89,7 +89,7 @@ public class SysData implements Serializable {
 		}
 		return true;
 	}
-
+	// load the database to the system
 	public static void loadDataBase(String fileName) {
 		database = null;
 		try {
