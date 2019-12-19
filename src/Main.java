@@ -1,3 +1,6 @@
+import java.util.Calendar;
+
+import Model.LostPerson;
 import Model.SysData;
 import View.MainView;
 import javafx.application.Application;
@@ -9,11 +12,12 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
-	
+	public static String fileName = "database.ser";
 	
 	public static void main(String args[]) {
-		SysData.loadDataBase();
+		SysData.getInstance().loadDataBase(fileName);
 		launch(args);
+		SysData.getInstance().saveDataBase(fileName);
 	}
 	
 	@Override
@@ -22,10 +26,8 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("View/MainView.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.setWidth(900);
-		stage.setHeight(640);
 		stage.setResizable(false);
-		stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.DECORATED);
 		stage.show();
 		
 	}

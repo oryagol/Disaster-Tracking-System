@@ -12,7 +12,7 @@ public class MainController {
 	// a method that do a loop on the imported list and checks if there is a match in the missing list and counts matches
 	public int syncLists() {
 		int count = 0;
-		for(LostPerson p : SysData.importedmissing) {
+		for(LostPerson p : SysData.getInstance().getImportedmissing()) {
 			Searcher s = null;
 			s = findMatch(p);
 			if(s != null) {
@@ -25,16 +25,16 @@ public class MainController {
 	}
 	// a method to find a match of a person from the missing list to a person from the found list
 	public Searcher findMatch(LostPerson p) {
-			if(SysData.findById.get(p.getId()) != null)
+			if(SysData.getInstance().getFindById().get(p.getId()) != null)
 			{
-				SysData.findById.get(p.getId()).setDateFound(Calendar.getInstance());
-				SysData.findById.get(p.getId()).setFoundedBy(p.getFoundedBy());
-				return SysData.findById.get(p.getId()).getSearchBy();
+				SysData.getInstance().getFindById().get(p.getId()).setDateFound(Calendar.getInstance());
+				SysData.getInstance().getFindById().get(p.getId()).setFoundedBy(p.getFoundedBy());
+				return SysData.getInstance().getFindById().get(p.getId()).getSearchBy();
 			}
-			else if(SysData.findByName.get(p.getName()) != null) {
-				SysData.findByName.get(p.getName()).setDateFound(Calendar.getInstance());
-				SysData.findById.get(p.getId()).setFoundedBy(p.getFoundedBy());
-				return SysData.findByName.get(p.getName()).getSearchBy();
+			else if(SysData.getInstance().getFindByName().get(p.getName()) != null) {
+				SysData.getInstance().getFindByName().get(p.getName()).setDateFound(Calendar.getInstance());
+				SysData.getInstance().getFindByName().get(p.getName()).setFoundedBy(p.getFoundedBy());
+				return SysData.getInstance().getFindByName().get(p.getName()).getSearchBy();
 			}
 			else
 				return null;

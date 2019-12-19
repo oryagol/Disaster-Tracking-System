@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import Controller.MainController;
+import Model.JSONHandler;
 import Model.SysData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +45,8 @@ public class MainView {
 	private ToggleButton exitBtn;
 
 	private MainController control = new MainController();
+	
+	public static String fileName = "database.ser";
 
 
 	//exit from system
@@ -59,11 +62,11 @@ public class MainView {
 	//import the found person from other systems and checks for a match
 	public void importData(ActionEvent event) {
 		Alert al = new Alert(Alert.AlertType.INFORMATION);
-		if(SysData.readLostPersonList()) {
+		if(JSONHandler.readLostPersonList()) {
 			al.setHeaderText("Imported Successfully");
 			al.setTitle("System Messege");
 			al.setResizable(false);
-			SysData.saveDataBase();
+			SysData.getInstance().saveDataBase(fileName);
 			int count = control.syncLists();
 			Alert al1 = new Alert(Alert.AlertType.INFORMATION);
 			if(count == 0) {

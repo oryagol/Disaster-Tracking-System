@@ -1,6 +1,12 @@
 package Model;
 
-public class Searcher {
+import java.io.Serializable;
+
+public class Searcher implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Name;
 	private String Phone;
 	private String Email;

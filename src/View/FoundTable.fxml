@@ -5,23 +5,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="643.0" stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FoundTable">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FoundTable">
    <children>
-      <TableView layoutX="-1.0" layoutY="35.0" prefHeight="431.0" prefWidth="641.0">
+      <TableView layoutX="-1.0" layoutY="35.0" prefHeight="466.0" prefWidth="700.0">
         <columns>
           <TableColumn fx:id="fName" prefWidth="70.0" text="Name" />
+            <TableColumn fx:id="ID" prefWidth="26.0" text="ID" />
             <TableColumn fx:id="height" prefWidth="51.0" text="Height" />
             <TableColumn fx:id="weight" prefWidth="52.0" text="Weight" />
-            <TableColumn fx:id="ID" prefWidth="26.0" text="ID" />
+            <TableColumn fx:id="hairColor" prefWidth="75.0" text="Hair Color" />
             <TableColumn fx:id="loca" prefWidth="55.0" text="Location" />
             <TableColumn fx:id="fFName" prefWidth="74.0" text="Name" />
-            <TableColumn fx:id="fID" prefWidth="38.0" text="ID" />
             <TableColumn fx:id="fEmail" prefWidth="40.0" text="Email" />
             <TableColumn fx:id="fPhone" prefWidth="53.0" text="Phone" />
             <TableColumn fx:id="date" prefWidth="115.0" text="Date Of Find" />
+            <TableColumn fx:id="match" prefWidth="50.0" text="Match" />
+            <TableColumn fx:id="state" prefWidth="38.0" text="State" />
         </columns>
       </TableView>
       <Text layoutX="-19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
-      <Text layoutX="214.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Finder Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="291.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Finder Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
    </children>
 </AnchorPane>

@@ -27,9 +27,6 @@ public class FoundTable {
 	    private TableColumn<?, ?> fFName;
 
 	    @FXML
-	    private TableColumn<?, ?> fID;
-
-	    @FXML
 	    private TableColumn<?, ?> fEmail;
 
 	    @FXML
@@ -37,6 +34,15 @@ public class FoundTable {
 
 	    @FXML
 	    private TableColumn<?, ?> date;
+
+	    @FXML
+	    private TableColumn<?, ?> hairColor;
+	    
+	    @FXML
+	    private TableColumn<?, ?> match;
+	    
+	    @FXML
+	    private TableColumn<?, ?> state;
     
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		

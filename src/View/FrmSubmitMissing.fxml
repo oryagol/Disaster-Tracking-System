@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
@@ -22,6 +22,6 @@
       <Button fx:id="upload" layoutX="275.0" layoutY="301.0" mnemonicParsing="false" onAction="#upload" styleClass="dark-blue" text="Upload Photo" />
       <TextField fx:id="height" layoutX="333.0" layoutY="130.0" promptText="Height" />
       <TextField fx:id="weight" layoutX="333.0" layoutY="92.0" promptText="Weight" />
-      <TextArea fx:id="discription" layoutX="333.0" layoutY="172.0" prefHeight="102.0" prefWidth="149.0" promptText="Discription" />
+      <ComboBox fx:id="hairColor" layoutX="333.0" layoutY="172.0" prefWidth="150.0" promptText="Hair Color" />
    </children>
 </AnchorPane>

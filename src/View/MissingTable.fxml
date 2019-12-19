@@ -5,25 +5,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="643.0" stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MissingTable">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@Icons/MainView.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MissingTable">
    <children>
-      <TableView layoutX="-1.0" layoutY="35.0" prefHeight="431.0" prefWidth="641.0">
+      <TableView fx:id="table" layoutX="-1.0" layoutY="35.0" prefHeight="464.0" prefWidth="700.0">
         <columns>
-          <TableColumn fx:id="fName" prefWidth="65.0" text="Name" />
-            <TableColumn fx:id="ID" prefWidth="32.0" text="ID" />
-            <TableColumn fx:id="height" prefWidth="45.0" text="Height" />
-            <TableColumn fx:id="weight" prefWidth="50.0" text="Weight" />
-            <TableColumn fx:id="photo" prefWidth="41.0" text="Photo" />
-            <TableColumn fx:id="sFName" prefWidth="54.0" text="Name" />
-            <TableColumn fx:id="sID" prefWidth="35.0" text="ID" />
-            <TableColumn fx:id="sEmail" minWidth="0.0" prefWidth="61.0" text="Email" />
-            <TableColumn fx:id="sPhone" prefWidth="51.0" text="Phone" />
-            <TableColumn fx:id="date" prefWidth="86.0" text="Report Date" />
-            <TableColumn fx:id="found" prefWidth="58.0" text="Found By" />
-            <TableColumn fx:id="dateFound" prefWidth="62.0" text="Date Found" />
+          <TableColumn fx:id="fName" prefWidth="59.0" text="Name" />
+            <TableColumn fx:id="ID" prefWidth="31.0" text="ID" />
+            <TableColumn fx:id="height" prefWidth="43.0" text="Height" />
+            <TableColumn fx:id="weight" prefWidth="42.0" text="Weight" />
+            <TableColumn fx:id="hairColor" prefWidth="62.0" text="Hair Color" />
+            <TableColumn fx:id="photo" prefWidth="48.0" text="Photo" />
+            <TableColumn fx:id="sFName" prefWidth="51.0" text="Name" />
+            <TableColumn fx:id="sEmail" minWidth="0.0" prefWidth="54.0" text="Email" />
+            <TableColumn fx:id="sPhone" prefWidth="46.0" text="Phone" />
+            <TableColumn fx:id="date" prefWidth="76.0" text="Report Date" />
+            <TableColumn fx:id="found" prefWidth="73.0" text="Found By" />
+            <TableColumn fx:id="dateFound" minWidth="0.0" prefWidth="59.0" text="Date Found" />
+            <TableColumn fx:id="match" prefWidth="55.0" text="Match" />
         </columns>
       </TableView>
       <Text layoutX="-16.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Missing Person Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
-      <Text layoutX="193.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Searcher Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
+      <Text layoutX="256.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dark-blue" text="Searcher Details:" textAlignment="CENTER" wrappingWidth="187.998046875" />
    </children>
 </AnchorPane>

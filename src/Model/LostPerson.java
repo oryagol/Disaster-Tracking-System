@@ -3,7 +3,8 @@ package Model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class LostPerson implements Serializable {
+public class LostPerson implements Serializable{
+
 	/**
 	 * 
 	 */
@@ -14,15 +15,23 @@ public class LostPerson implements Serializable {
 	private Calendar missingReportDate;
 	private Double Height;
 	private Double Weight;
+	private HairColor color;
 	private Finder foundedBy;
 	private Searcher searchBy;
 	private Calendar DateFound;
-	private String discription;
+	private Double matchPercent;
+	private State state;
 
 
 	public LostPerson(Finder foundedBy) {
 		super();
 		this.foundedBy = foundedBy;
+	}
+	
+	public LostPerson(String name, Integer id) {
+		super();
+		this.name = name;
+		this.id = id;
 	}
 	
 	public LostPerson(Searcher searchBy) {
@@ -31,7 +40,7 @@ public class LostPerson implements Serializable {
 	}
 
 	public LostPerson(String name, String imgURL, int id, Calendar missingReportDate
-			, Double height, Double weight, Finder foundedBy, Searcher searcher ,String discription) {
+			, Double height, Double weight,String color, Finder foundedBy, Searcher searcher) {
 		super();
 		this.name = name;
 		this.ImgURL = imgURL;
@@ -39,9 +48,9 @@ public class LostPerson implements Serializable {
 		this.missingReportDate = missingReportDate;
 		Height = height;
 		Weight = weight;
+		setColor(color);
 		this.foundedBy = foundedBy;
 		this.searchBy = searcher;
-		this.discription = discription;
 		
 	}
 
@@ -130,9 +139,7 @@ public class LostPerson implements Serializable {
 
 	@Override
 	public String toString() {
-		return "LostPerson [name=" + name + ", ImgURL=" + ImgURL + ", id=" + id + ", missingReportDate="
-				+ missingReportDate + ", Height=" + Height + ", Weight=" + Weight + ", foundedBy=" + foundedBy
-				+ ", searchBy=" + searchBy + ", DateFound=" + DateFound + ", discription=" + discription + "]";
+		return "LostPerson name=" + name;
 	}
 
 	public Searcher getSearchBy() {
@@ -155,14 +162,51 @@ public class LostPerson implements Serializable {
 		Weight = weight;
 	}
 
-	public String getDiscription() {
-		return discription;
+	public HairColor getColor() {
+		return color;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setColor(String color) {
+		if(color.equals(HairColor.Blonde.toString()))
+			this.color = HairColor.Blonde;
+		else if(color.equals(HairColor.Brown.toString()))
+			this.color = HairColor.Brown;
+		else if(color.equals(HairColor.LightBlonde.toString()))
+			this.color = HairColor.LightBlonde;
+		else if(color.equals(HairColor.RedHead.toString()))
+			this.color = HairColor.RedHead;
+		else if(color.equals(HairColor.Dark.toString()))
+			this.color = HairColor.Dark;
+		else if(color.equals(HairColor.LightBrown.toString()))
+			this.color = HairColor.LightBrown;
+		else if(color.equals(HairColor.White.toString()))
+			this.color = HairColor.White;
+		else if(color.equals(HairColor.Other.toString()))
+			this.color = HairColor.Other;
 	}
 
+	public Double getMatchPercent() {
+		return matchPercent;
+	}
+
+	public void setMatchPercent(Double matchPercent) {
+		this.matchPercent = matchPercent;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		if(state.equals(State.Alive))
+			this.state = State.Alive;
+		else if(state.equals(State.Dead))
+			this.state = State.Dead;
+		else
+			this.state = State.Injured;
+	}
+	
+	
 	
 	
 
