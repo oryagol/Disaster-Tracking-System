@@ -12,14 +12,16 @@ public class Finder implements Serializable {
 	private String email;
 	private Integer id;
 	private String location;
+	private LostPerson foundPerson;
 
-	public Finder(String name, String phone, String email, int id, String location) {
+	public Finder(String name, String phone, String email, int id, String location, LostPerson foundPerson) {
 		super();
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
 		this.id = id;
 		this.location = location;
+		this.foundPerson = foundPerson;
 	}
 
 	public String getName() {
@@ -61,6 +63,18 @@ public class Finder implements Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public LostPerson getFoundPerson() {
+		return foundPerson;
+	}
+
+	public void setFoundPerson(LostPerson foundPerson) {
+		this.foundPerson = foundPerson;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	
