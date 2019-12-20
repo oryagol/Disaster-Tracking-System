@@ -105,8 +105,9 @@ public class FrmSubmitMissing implements Initializable {
 				e1.printStackTrace();
 			}
 		}
-		Searcher s = new Searcher(sName, sPhone, sEmail, sId);
+		Searcher s = new Searcher(sName, sPhone, sEmail, sId, null);
 		LostPerson lp = new LostPerson(name, imgURL, id, d, h, w,color, null,s);
+		s.setSearchPerson(lp);
 		lp.setSearchBy(s);
 		Alert al = new Alert(Alert.AlertType.CONFIRMATION);
 		al.setHeaderText("Are You Sure You Finished The Form?");

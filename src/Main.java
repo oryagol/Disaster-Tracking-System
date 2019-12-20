@@ -1,7 +1,11 @@
 import java.util.Calendar;
 
 import Model.JSONHandler;
+import Controller.MainController;
+import Model.Finder;
+import Model.HairColor;
 import Model.LostPerson;
+import Model.Searcher;
 import Model.SysData;
 import View.MainView;
 import javafx.application.Application;
@@ -17,6 +21,19 @@ public class Main extends Application {
 	
 	public static void main(String args[]) {
 		SysData.getInstance().loadDataBase(fileName);
+		LostPerson lp = new LostPerson("or", 1);
+		Searcher s = new Searcher("saghi", "050", "oryagol@gmail.com", 5, lp);
+		Finder f = new Finder("toto", "053", "oryagol@gmail.com", 2, "haifa", lp);
+		lp.setColor("Blonde");
+		lp.setDateFound(Calendar.getInstance());
+		lp.setHeight(1.75);
+		lp.setWeight(70);
+		lp.setMatchPercent(75.0);
+		lp.setMissingReportDate(Calendar.getInstance());
+		lp.setFoundedBy(f);
+		lp.setSearchBy(s);
+		MainController control = new MainController();
+		System.out.println(control.sendEmail(s));
 		launch(args);
 		SysData.getInstance().saveDataBase(fileName);
 	}
