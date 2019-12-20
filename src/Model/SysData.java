@@ -19,7 +19,7 @@ public class SysData implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private  final ArrayList<LostPerson> importedmissing;
+	private   ArrayList<LostPerson> importedmissing;
 	private  final ArrayList<LostPerson> missingSearched;
 	private  final HashMap<String, LostPerson> findByName;
 	private  final HashMap<Integer, LostPerson> findById;

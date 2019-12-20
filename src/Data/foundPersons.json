@@ -1,38 +1,44 @@
 {
   "LostPersons": [
     {
-      "id": "1111",
+      "id": 1111,
       "finder": {
-        "id": "2222",
+        "id": 2222,
         "email": "saghi325@gmail.com",
         "phone": "0549947338",
-        "First Name": "Chang",
-		"Last Name": "Ba"
+        "Name": "Chang Ba",
+		"Location": "Bangkok"
       },
       "email": "saghi325@gmail.com",
       "phone": "0542427330",
-      "First Name": "Eli",
-	  "Last Name": "Cohen",
       "Height": "187",
       "Weight": "80",
+	  "Hair Color": "Dark",
       "Additional Info": "blue eyes dark hair mid 20's",
+	  "Found Year": 2019,
+	  "Found Month": 6,
+	  "Found Day": 30,
+	  "Name": "Eli Cohen"
     },
     {
-      "id": "",
+      "id": 0,
       "finder": {
-        "id": "2222",
+        "id": 2222,
         "email": "saghi325@gmail.com",
         "phone": "0549947338",
-        "First Name": "Chang",
-		"Last Name": "Ba"
+        "Name": "Chang Ba",
+		"Location": "Bangkok"
       },
       "email": "",
       "phone": "0542427330",
-      "First Name": "",
-	  "Last Name":  "",
       "Height": "170",
       "Weight": "65",
+	  "Hair Color": "Blonde",
       "Additional Info": "middle eastren dark eyes dark hair 30's",
+	  "Found Year": 2019,
+	  "Found Month": 6,
+	  "Found Day": 30,
+	  "Name": "or yagol"
     }
   ]
 }

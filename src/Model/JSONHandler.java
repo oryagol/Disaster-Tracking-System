@@ -20,10 +20,13 @@ public class JSONHandler {
 	@SuppressWarnings("unchecked")
 	public static Boolean readLostPersonList() {
 		SysData.getInstance().getImportedmissing().clear();
+		System.out.println("test1");
 		try (Reader reader = new FileReader("src\\Data\\foundPersons.json")) {
+			System.out.println("test2");
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 			JSONArray jsonArray = (JSONArray) jsonObject.get("LostPersons");
+			System.out.println("test3");
 			jsonArray.forEach(lostPerson -> parseQuestion( (JSONObject) lostPerson ));
 			System.out.println("All Missing Persons were read from file");
 			reader.close();
@@ -45,23 +48,35 @@ public class JSONHandler {
 	public static void parseQuestion(JSONObject jsonMissingPerson) {
 		JSONObject finderObj  = (JSONObject) jsonMissingPerson.get("finder");
 		String finderName=(String)finderObj.get("Name");
-		String finderID=(String)finderObj.get("id");
+		long  finderID=(Long)finderObj.get("id");
 		String finderEmail=(String)finderObj.get("email");
 		String finderPhone=(String)finderObj.get("phone");
-		String location = (String)finderObj.get("location");
-        Finder finder=new Finder(finderName ,finderPhone,finderEmail,Integer.parseInt(finderID), location);
-		String missingId  = (String) jsonMissingPerson.get("id");
-		String missingFirstName = (String) jsonMissingPerson.get("Name");
+		String location = (String)finderObj.get("Location");
+        Finder finder=new Finder(finderName ,finderPhone,finderEmail,(int)finderID, location);
+		long missingId  =(Long) jsonMissingPerson.get("id");
+		String missingName = (String) jsonMissingPerson.get("Name");
 		String missingHeight = (String) jsonMissingPerson.get("Height");
 		String missingWeight = (String) jsonMissingPerson.get("Weight");
+		long year=(Long) jsonMissingPerson.get("Found Year");
+		long month=(Long) jsonMissingPerson.get("Found Month");
+		long day=(Long) jsonMissingPerson.get("Found Day");
+		String hairColor=(String) jsonMissingPerson.get("Hair Color");
+		
 		Calendar date= Calendar.getInstance();
+		date.set(Calendar.YEAR, (int) year);
+	    date.set(Calendar.MONTH,(int) month);
+	    date.set(Calendar.DAY_OF_MONTH, (int)day);
+	    
 		LostPerson lp= new LostPerson(finder);
-		lp.setName(missingFirstName);
-		lp.setId(Integer.parseInt(missingId));
+		lp.setName(missingName);
+		lp.setId((int)missingId);
 		lp.setHeight(Double.parseDouble(missingHeight));
 		lp.setWeight(Double.parseDouble(missingWeight));
 		lp.setDateFound(date);
+		lp.setDateFound(date);
+		lp.setColor(hairColor);
 		SysData.getInstance().getImportedmissing().add(lp);
 		System.out.println(lp+ " was imported successfully.");
+
 	}
 }

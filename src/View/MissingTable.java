@@ -66,8 +66,8 @@ public class MissingTable implements Initializable{
 	    private ArrayList<MissingTableRecord> records = new ArrayList<>();
 	    
 	    private ObservableList<MissingTableRecord> lostList = FXCollections.observableArrayList();
-    
-	    @Override
+   
+	 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 			setList();
 			//Connect Cell To Object
@@ -79,8 +79,7 @@ public class MissingTable implements Initializable{
 			sFName.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchName"));
 			sEmail.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchEmail"));
 			sPhone.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchPhone"));
-			date.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("submitDate"));
-			found.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("foundPerson"));
+			date.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("finderLocation"));
 			dateFound.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("dateFound"));
 			hairColor.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("hairColor"));
 			match.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("match"));
