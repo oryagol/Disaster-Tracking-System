@@ -1,9 +1,13 @@
 package View;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 
 import Model.Finder;
 import Model.HairColor;
+import javafx.scene.control.Hyperlink;
 
 // a class that describe a record in the missing person table
 public class MissingTableRecord {
@@ -12,7 +16,7 @@ public class MissingTableRecord {
 		private Integer ID;
 		private Double height;
 		private Double weight;
-		private String photo;
+		private Hyperlink photo;
 		private String searchName;
 		private String searchEmail;
 		private String searchPhone;
@@ -23,7 +27,7 @@ public class MissingTableRecord {
 		private String match;
 		
 		
-		public MissingTableRecord(String name, Integer iD, Double height, Double weight,String photo, String searchName,
+		public MissingTableRecord(String name, Integer iD, Double height, Double weight,String photoURL, String searchName,
 				Integer searchID, String searchEmail, String searchPhone,  Finder foundPerson,
 				Calendar dateFound, HairColor hairColor, Double match) {
 			super();
@@ -31,25 +35,33 @@ public class MissingTableRecord {
 			ID = iD;
 			this.height = height;
 			this.weight = weight;
-			this.photo = photo;
+			this.photo = new Hyperlink("photo");
+			photo.setOnAction(evt -> {
+	            File file = new File(photoURL+".jpg");
+	            Desktop desktop = Desktop.getDesktop();
+	            if(file.exists())
+					try {
+						desktop.open(file);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	        });
 			this.searchName = searchName;
 			this.searchEmail = searchEmail;
 			this.searchPhone = searchPhone;
 			Calendar cal = Calendar.getInstance();
-			this.submitDate = cal.get(Calendar.DAY_OF_MONTH)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.YEAR);
+			this.submitDate = cal.get(Calendar.DAY_OF_MONTH)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.YEAR);
 			if(foundPerson != null)
 				this.foundPerson = foundPerson.getName();
 			else
 				this.foundPerson = "";
 			if(dateFound != null)
-				this.dateFound = dateFound.get(Calendar.DAY_OF_MONTH)+"-"+dateFound.get(Calendar.MONTH)+"-"+dateFound.get(Calendar.YEAR);
+				this.dateFound = dateFound.get(Calendar.DAY_OF_MONTH)+"-"+(dateFound.get(Calendar.MONTH)+1)+"-"+dateFound.get(Calendar.YEAR);
 			else
 				this.dateFound = "";
 			this.hairColor = hairColor.toString();
-			if(match != null)
-				this.match = match.toString()+"%";
-			else
-				this.match = "";
+			this.match = match.toString()+"%";
 		}
 		public String getName() {
 			return Name;
@@ -123,6 +135,13 @@ public class MissingTableRecord {
 		public void setMatch(String match) {
 			this.match = match;
 		}
+		public Hyperlink getPhoto() {
+			return photo;
+		}
+		public void setPhoto(Hyperlink photo) {
+			this.photo = photo;
+		}
+		
 		
 		
 		

@@ -21,54 +21,63 @@ import Model.SysData;
 public class MainController {
 
 	private ArrayList<Searcher> searchers = new ArrayList<>();
+	
 
 	// a method that do a loop on the imported list and checks if there is a match in the missing list and counts matches
 	public int syncLists() {
+		for(LostPerson lp : SysData.getInstance().getMissingSearched()) {
+			lp.setMatchPercent(0.0);
+		}
 		for(LostPerson found : SysData.getInstance().getImportedmissing()) {
 			findMatch(found);
-			if(!searchers.isEmpty())
+			if(found.getMatchPercent() > 100.0)
+				found.setMatchPercent(100.0);
+			if(found.getFoundedBy() != null)
 				sendEmail(found.getFoundedBy());
-			if(searchers.size() == 1) {
-				found.setSearchBy(searchers.get(0));
-				sendEmail(searchers.get(0));
-			}
-			else if(searchers.size() > 1) {
-				for(Searcher s : searchers) {
-					sendEmail(s);
+				if(searchers.size() == 1) {
+					found.setSearchBy(searchers.get(0));
+					sendEmail(searchers.get(0));
 				}
-			}
+				else if(searchers.size() > 1) {
+					for(Searcher s : searchers) {
+						sendEmail(s);
+					}
+				}
 		}
 		return searchers.size();
 	}
 	// a method to find a match of a person from the missing list to a person from the found list
 	public void findMatch(LostPerson found) {
+		found.setMatchPercent(0.0);
 		matchById(found);
 		matchByName(found);
-		matchByVisual(found);
+		//matchByVisual(found);
 	}
-
+	/** unsolved feature, maybe in next version.
 	public void matchByVisual(LostPerson found) {
 		for(LostPerson lp : SysData.getInstance().getMissingSearched()) {
-			if(lp.getColor().equals(found.getColor()) && (found.getHeight()-2 <= lp.getHeight()) &&
-					(lp.getHeight()	<= found.getHeight()+2) && (found.getWeight()-2 <= lp.getWeight()) &&
-					(lp.getWeight() <= found.getWeight()+2)) {
+			if(lp.getColor().equals(found.getColor()) && (found.getHeight()-5 <= lp.getHeight()) &&
+					(lp.getHeight()	<= found.getHeight()+5) && (found.getWeight()-5 <= lp.getWeight()) &&
+					(lp.getWeight() <= found.getWeight()+5)) {
 				lp.setDateFound(Calendar.getInstance());
 				lp.setFoundedBy(found.getFoundedBy());
-				lp.setMatchPercent(found.getMatchPercent()+25);
-				found.setMatchPercent(found.getMatchPercent()+25);
+				lp.setMatchPercent(lp.getMatchPercent()+30);
+				found.setMatchPercent(found.getMatchPercent()+30);
 				searchers.add(lp.getSearchBy());
 			}
 		}
 	}
+	*/
 
 	public void matchByName(LostPerson found) {
 		if(SysData.getInstance().getFindByName().get(found.getName()) != null)
 		{
+			System.out.println(found);
 			SysData.getInstance().getFindByName().get(found.getName()).setDateFound(Calendar.getInstance());
 			SysData.getInstance().getFindByName().get(found.getName()).setFoundedBy(found.getFoundedBy());
 			SysData.getInstance().getFindByName().get(found.getName()).setMatchPercent(SysData.getInstance().getFindByName()
-					.get(found.getName()).getMatchPercent()+35);
-			found.setMatchPercent(found.getMatchPercent()+35);
+					.get(found.getName()).getMatchPercent()+50);
+			found.setMatchPercent(found.getMatchPercent()+50);
 			found.setSearchBy(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
 			searchers.add(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
 		}
@@ -80,8 +89,8 @@ public class MainController {
 			SysData.getInstance().getFindById().get(found.getId()).setDateFound(Calendar.getInstance());
 			SysData.getInstance().getFindById().get(found.getId()).setFoundedBy(found.getFoundedBy());
 			SysData.getInstance().getFindById().get(found.getId()).setMatchPercent(SysData.getInstance().getFindById()
-					.get(found.getId()).getMatchPercent()+35);
-			found.setMatchPercent(found.getMatchPercent()+35);
+					.get(found.getId()).getMatchPercent()+50);
+			found.setMatchPercent(found.getMatchPercent()+50);
 			found.setSearchBy(SysData.getInstance().getFindById().get(found.getId()).getSearchBy());
 			searchers.add(SysData.getInstance().getFindById().get(found.getId()).getSearchBy());
 		}
@@ -125,15 +134,15 @@ public class MainController {
 
 				// Set To: header field of the header.
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
+				System.out.println(s);
 				// Set Subject: header field
 				message.setSubject("We Maybe Found A Match Of The Person You Searched!");
-
+				System.out.println();
 				String mes = "Dear "+s.getName()+", We Are Glad To Tell You That We Have Found A Match Of " +s.getSearchPerson().getMatchPercent()
-						+" To Your Missing Person" + " He Is Located At "+s.getSearchPerson().getFoundedBy().getLocation() +" You Can" +
+						+"% To Your Missing Person." + " He Is Located At "+s.getSearchPerson().getFoundedBy().getLocation() +" You Can" +
 						" Contact His Finder "+ s.getSearchPerson().getFoundedBy().getName() + " By His Phone Number " +
-						s.getSearchPerson().getFoundedBy().getPhone() + " .";
-				mes+= "\nYours Dearly, MPAD System For Finding Missing People.";
+						s.getSearchPerson().getFoundedBy().getPhone() + ".";
+				mes+= "\n\nYours Dearly, MPAD System For Finding Missing People.";
 				// Now set the actual message
 				message.setText(mes);
 
@@ -170,7 +179,7 @@ public class MainController {
 			Session session = Session.getInstance(props,
 					new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("flipcoinappteam@gmail.com","kursizuv10");
+					return new PasswordAuthentication("flipcoinappteam@gmail.com","MPADproject");
 				}
 			});
 
@@ -183,14 +192,20 @@ public class MainController {
 
 				// Set To: header field of the header.
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
+				System.out.println(f);
 				// Set Subject: header field
-				message.setSubject("We Maybe Found A Match Of The Person You Found!");
-
-				String mes = "Dear "+f.getName()+", We Are Glad To Tell You That We Have Found A Match Of " +f.getFoundPerson().getMatchPercent()
-						+" To The Missing Person You Have Found And The Name Of His Searcher Is"+f.getFoundPerson().getSearchBy().getName()+
-						"You Can Contact Him By His Phone " + f.getFoundPerson().getSearchBy().getPhone()+" .";
-				mes+= "\nYours Dearly, MPAD System For Finding Missing People.";
+				message.setSubject("We Maybe Found A Match Of The Person You Have Found!");
+				String mesManySearch = "Dear "+f.getName()+", We Are Glad To Tell You That We Have Found A Match Of " +
+						f.getFoundPerson().getMatchPercent()
+						+"% To The Missing Person You Have Found, " + "Check The Details In The App.";
+				String mes;
+				if(f.getFoundPerson().getSearchBy() == null)
+					mes = mesManySearch;
+				else
+					mes = "Dear "+f.getName()+", We Are Glad To Tell You That We Have Found A Match Of " +f.getFoundPerson().getMatchPercent()
+					+"% To The Missing Person You Have Found And The Name Of His Searcher Is "+f.getFoundPerson().getSearchBy().getName()+
+					". You Can Contact Him By His Phone " + f.getFoundPerson().getSearchBy().getPhone()+".";
+				mes+= "\n\nYours Dearly, MPAD System For Finding Missing People.";
 				// Now set the actual message
 				message.setText(mes);
 

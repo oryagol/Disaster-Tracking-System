@@ -56,6 +56,10 @@ public class Searcher implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@Override
+	public String toString() {
+		return "Searcher [Name=" + Name + ", Phone=" + Phone + ", Email=" + Email + ", id=" + id + "]";
+	}
 	
 	
 	

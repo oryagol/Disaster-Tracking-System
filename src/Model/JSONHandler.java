@@ -20,13 +20,10 @@ public class JSONHandler {
 	@SuppressWarnings("unchecked")
 	public static Boolean readLostPersonList() {
 		SysData.getInstance().getImportedmissing().clear();
-		System.out.println("test1");
 		try (Reader reader = new FileReader("src\\Data\\foundPersons.json")) {
-			System.out.println("test2");
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 			JSONArray jsonArray = (JSONArray) jsonObject.get("LostPersons");
-			System.out.println("test3");
 			jsonArray.forEach(lostPerson -> parseQuestion( (JSONObject) lostPerson ));
 			System.out.println("All Missing Persons were read from file");
 			reader.close();
@@ -57,6 +54,7 @@ public class JSONHandler {
 		String missingName = (String) jsonMissingPerson.get("Name");
 		String missingHeight = (String) jsonMissingPerson.get("Height");
 		String missingWeight = (String) jsonMissingPerson.get("Weight");
+		String missingState = (String) jsonMissingPerson.get("State");
 		long year=(Long) jsonMissingPerson.get("Found Year");
 		long month=(Long) jsonMissingPerson.get("Found Month");
 		long day=(Long) jsonMissingPerson.get("Found Day");
@@ -75,6 +73,9 @@ public class JSONHandler {
 		lp.setDateFound(date);
 		lp.setDateFound(date);
 		lp.setColor(hairColor);
+		lp.setState(missingState);
+		lp.setMatchPercent(0.0);
+		finder.setFoundPerson(lp);
 		SysData.getInstance().getImportedmissing().add(lp);
 		System.out.println(lp+ " was imported successfully.");
 

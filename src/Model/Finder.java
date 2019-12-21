@@ -23,6 +23,15 @@ public class Finder implements Serializable {
 		this.location = location;
 		this.foundPerson = foundPerson;
 	}
+	
+	public Finder(String name, String phone, String email, int id, String location) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.id = id;
+		this.location = location;
+	}
 
 	public String getName() {
 		return name;
@@ -75,6 +84,12 @@ public class Finder implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Finder [name=" + name + ", phone=" + phone + ", email=" + email + ", id=" + id + ", location="
+				+ location + "]";
 	}
 
 	

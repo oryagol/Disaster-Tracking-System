@@ -77,28 +77,23 @@ public class FoundTable implements Initializable {
 		date.setCellValueFactory(new PropertyValueFactory<FoundTableRecords, String>("dateFound"));
 		hairColor.setCellValueFactory(new PropertyValueFactory<FoundTableRecords, String>("hairColor"));
 		match.setCellValueFactory(new PropertyValueFactory<FoundTableRecords, String>("match"));
-		
+		state.setCellValueFactory(new PropertyValueFactory<FoundTableRecords, String>("state"));
 		
 		table.setItems(lostList);
 	}
 
 // setting the list to initialize the table
 public void setList() {
-	System.out.println(SysData.getInstance().getImportedmissing().get(0).getFoundedBy().getLocation());
-	System.out.println(SysData.getInstance().getImportedmissing().get(0).getFoundedBy().getLocation());
-
 	for(LostPerson lp : SysData.getInstance().getImportedmissing()) {
-
 
 		records.add(new FoundTableRecords(lp.getName(), lp.getId(), lp.getHeight(), lp.getWeight(), lp.getFoundedBy().getName(),
 				lp.getFoundedBy().getId(), lp.getFoundedBy().getEmail(),
 				lp.getFoundedBy().getPhone(), lp.getFoundedBy().getLocation(),
-			    lp.getDateFound(), lp.getColor(), lp.getMatchPercent()));
+			    lp.getDateFound(), lp.getColor(), lp.getMatchPercent(),lp.getState().toString()));
 		
 
 	}
 	
 	lostList.addAll(records);
-	System.out.println(records);
 }
 }

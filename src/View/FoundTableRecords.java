@@ -18,17 +18,18 @@ public class FoundTableRecords {
 	private String dateFound;
 	private String hairColor;
 	private String match;
+	private String state;
 
 
 	public FoundTableRecords(String name, Integer iD, Double height, Double weight, String finderName,
 			Integer finderID, String finderEmail, String finderPhone,String finderLocation,
-			Calendar dateFound, HairColor hairColor, Double match) {
+			Calendar dateFound, HairColor hairColor, Double match, String state) {
 		super();
 		
-		if(Name!=null)
+		if(name != null)
 			Name = name;
 		else 
-			Name="No Info";
+			Name = "No Info";
 
 		ID = iD;
 
@@ -66,6 +67,7 @@ public class FoundTableRecords {
 			this.match = match.toString()+"%";
 		else
 			this.match = "";
+		this.state = state;
 	}
 
 
@@ -202,5 +204,15 @@ public class FoundTableRecords {
 	}
 
 
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	
 
 }

@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,7 +38,7 @@ public class MissingTable implements Initializable{
 	    private TableColumn<MissingTableRecord, Double> weight;
 
 	    @FXML
-	    private TableColumn<MissingTableRecord, String> photo;
+	    private TableColumn<MissingTableRecord, Hyperlink> photo;
 
 	    @FXML
 	    private TableColumn<MissingTableRecord, String> sFName;
@@ -75,11 +76,12 @@ public class MissingTable implements Initializable{
 			ID.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, Integer>("ID"));
 			height.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, Double>("height"));
 			weight.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, Double>("Weight"));
-			photo.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("photo"));
+			photo.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, Hyperlink>("photo"));
 			sFName.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchName"));
 			sEmail.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchEmail"));
 			sPhone.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("searchPhone"));
-			date.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("finderLocation"));
+			found.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("foundPerson"));
+			date.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("submitDate"));
 			dateFound.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("dateFound"));
 			hairColor.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("hairColor"));
 			match.setCellValueFactory(new PropertyValueFactory<MissingTableRecord, String>("match"));

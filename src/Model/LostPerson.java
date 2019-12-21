@@ -51,7 +51,7 @@ public class LostPerson implements Serializable{
 		setColor(color);
 		this.foundedBy = foundedBy;
 		this.searchBy = searcher;
-		
+		this.matchPercent = 0.0;
 	}
 
 
@@ -198,9 +198,9 @@ public class LostPerson implements Serializable{
 	}
 
 	public void setState(String state) {
-		if(state.equals(State.Alive))
+		if(state.equals("Alive"))
 			this.state = State.Alive;
-		else if(state.equals(State.Dead))
+		else if(state.equals("Dead"))
 			this.state = State.Dead;
 		else
 			this.state = State.Injured;
