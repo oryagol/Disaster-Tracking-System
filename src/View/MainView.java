@@ -68,22 +68,27 @@ public class MainView {
 			al.setResizable(false);
 			SysData.getInstance().saveDataBase(fileName);
 			int count = control.syncLists();
+			System.out.println(count);
 			Alert al1 = new Alert(Alert.AlertType.INFORMATION);
 			if(count == 0) {
 				al1.setHeaderText("Matches Not Found");
 				al1.setTitle("System Messege");
 				al1.setResizable(false);
+				al1.show();
 			}
 			else {
-				al1.setHeaderText("Found "+count+"Matches!");
+				al1.setHeaderText("Found "+count+" Matches!");
 				al1.setTitle("System Messege");
 				al1.setResizable(false);
+				al1.show();
 			}
+			al.show();
 		}
 		else {
 			al.setHeaderText("Import failed");
 			al.setTitle("System Messege");
 			al.setResizable(false);
+			al.show();
 		}
 
 	}

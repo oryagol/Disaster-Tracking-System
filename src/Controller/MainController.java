@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -14,36 +15,33 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.*;
 
 import Model.Finder;
+import Model.JSONHandler;
 import Model.LostPerson;
 import Model.Searcher;
 import Model.SysData;
 
 public class MainController {
 
-	private ArrayList<Searcher> searchers = new ArrayList<>();
-	
+	private HashSet<Searcher> searchers = new HashSet<Searcher>();
+
 
 	// a method that do a loop on the imported list and checks if there is a match in the missing list and counts matches
 	public int syncLists() {
 		for(LostPerson lp : SysData.getInstance().getMissingSearched()) {
 			lp.setMatchPercent(0.0);
 		}
-		for(LostPerson found : SysData.getInstance().getImportedmissing()) {
+		for(LostPerson found : JSONHandler.importedPersonsTempList) {
 			findMatch(found);
 			if(found.getMatchPercent() > 100.0)
 				found.setMatchPercent(100.0);
 			if(found.getFoundedBy() != null)
 				sendEmail(found.getFoundedBy());
-				if(searchers.size() == 1) {
-					found.setSearchBy(searchers.get(0));
-					sendEmail(searchers.get(0));
-				}
-				else if(searchers.size() > 1) {
-					for(Searcher s : searchers) {
-						sendEmail(s);
-					}
-				}
 		}
+		for(Searcher s : searchers) {
+			sendEmail(s);
+		}
+		SysData.getInstance().getImportedmissing().addAll(JSONHandler.importedPersonsTempList);
+		JSONHandler.importedPersonsTempList.clear();
 		return searchers.size();
 	}
 	// a method to find a match of a person from the missing list to a person from the found list
@@ -67,7 +65,7 @@ public class MainController {
 			}
 		}
 	}
-	*/
+	 */
 
 	public void matchByName(LostPerson found) {
 		if(SysData.getInstance().getFindByName().get(found.getName()) != null)
@@ -137,7 +135,6 @@ public class MainController {
 				System.out.println(s);
 				// Set Subject: header field
 				message.setSubject("We Maybe Found A Match Of The Person You Searched!");
-				System.out.println();
 				String mes = "Dear "+s.getName()+", We Are Glad To Tell You That We Have Found A Match Of " +s.getSearchPerson().getMatchPercent()
 						+"% To Your Missing Person." + " He Is Located At "+s.getSearchPerson().getFoundedBy().getLocation() +" You Can" +
 						" Contact His Finder "+ s.getSearchPerson().getFoundedBy().getName() + " By His Phone Number " +

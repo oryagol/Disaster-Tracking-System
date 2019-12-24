@@ -37,7 +37,7 @@ public class MissingTableRecord {
 			this.weight = weight;
 			this.photo = new Hyperlink("photo");
 			photo.setOnAction(evt -> {
-	            File file = new File(photoURL+".jpg");
+	            File file = new File(photoURL);
 	            Desktop desktop = Desktop.getDesktop();
 	            if(file.exists())
 					try {

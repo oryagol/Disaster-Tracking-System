@@ -2,6 +2,7 @@
 import java.util.Calendar;
 
 import Model.JSONHandler;
+import Model.LostPerson;
 import Model.SysData;
 import View.MainView;
 import javafx.application.Application;

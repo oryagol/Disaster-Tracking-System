@@ -3,6 +3,7 @@ package Model;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.json.simple.JSONArray;
@@ -12,6 +13,7 @@ import org.json.simple.parser.ParseException;
 
 public class JSONHandler {
 
+	public static ArrayList<LostPerson> importedPersonsTempList = new ArrayList<>();
 	
 	//reads the question.json file
 	/*important! this should be called only in system startup
@@ -76,7 +78,7 @@ public class JSONHandler {
 		lp.setState(missingState);
 		lp.setMatchPercent(0.0);
 		finder.setFoundPerson(lp);
-		SysData.getInstance().getImportedmissing().add(lp);
+		importedPersonsTempList.add(lp);
 		System.out.println(lp+ " was imported successfully.");
 
 	}

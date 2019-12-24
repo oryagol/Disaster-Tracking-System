@@ -94,17 +94,7 @@ public class FrmSubmitMissing implements Initializable {
 		Double w = Double.parseDouble(weight.getText());
 		String color = hairColor.getValue();
 		Calendar d = Calendar.getInstance();
-		String imgURL = "src/View/Photos/"+id;
-		if(image != null)
-		{
-			File toFile = new File(imgURL);
-			try {
-				java.nio.file.Files.move(image.toPath(), toFile.toPath() ,StandardCopyOption.REPLACE_EXISTING);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
+		String imgURL = "src/View/Photos/"+id+".jpg";
 		Searcher s = new Searcher(sName, sPhone, sEmail, sId, null);
 		LostPerson lp = new LostPerson(name, imgURL, id, d, h, w,color, null,s);
 		s.setSearchPerson(lp);
@@ -117,6 +107,17 @@ public class FrmSubmitMissing implements Initializable {
 		if(result.get() == ButtonType.OK) {
 			System.out.println(lp);
 			SysData.getInstance().addMissingForm(lp);
+			emptyFields();
+			if(image != null)
+			{
+				File toFile = new File(imgURL);
+				try {
+					java.nio.file.Files.copy(image.toPath(), toFile.toPath() ,StandardCopyOption.REPLACE_EXISTING);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -135,6 +136,20 @@ public class FrmSubmitMissing implements Initializable {
 		ObservableList<String> colorsToShow = FXCollections.observableArrayList();
 		colorsToShow.addAll(colors);
 		hairColor.setItems(colorsToShow);
+		
+	}
+	
+	public void emptyFields() {
+		missFirstName.clear();
+		missLastName.clear();
+		missID.clear();
+		searchEmail.clear();
+		searchFirstName.clear();
+		searchLastName.clear();
+		searchID.clear();
+		searchPhone.clear();
+		height.clear();
+		weight.clear();
 		
 	}
 }
