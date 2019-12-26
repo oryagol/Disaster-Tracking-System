@@ -1,0 +1,4 @@
+1. Enter To The cmd.
+2. Run -> java -jar @pathOfJarDirectory@\MPAD.jar
+put your directory path before the MPAD.jar.
+3. The Progrem GUI Will show in screen.
