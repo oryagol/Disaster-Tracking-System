@@ -3,6 +3,8 @@ package Model;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -14,6 +16,7 @@ import org.json.simple.parser.ParseException;
 public class JSONHandler {
 
 	public static ArrayList<LostPerson> importedPersonsTempList = new ArrayList<>();
+	public static String path = GetExecutionPath();
 	
 	//reads the question.json file
 	/*important! this should be called only in system startup
@@ -22,7 +25,7 @@ public class JSONHandler {
 	@SuppressWarnings("unchecked")
 	public static Boolean readLostPersonList() {
 		SysData.getInstance().getImportedmissing().clear();
-		try (Reader reader = new FileReader("src\\Data\\foundPersons.json")) {
+		try (Reader reader = new FileReader(path+"src/Data/foundPersons.json")) {
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 			JSONArray jsonArray = (JSONArray) jsonObject.get("LostPersons");
@@ -82,4 +85,24 @@ public class JSONHandler {
 		System.out.println(lp+ " was imported successfully.");
 
 	}
+
+	public String getPath() {
+		return path;
+	}
+	
+	public static String GetExecutionPath(){
+		String abpath = JSONHandler.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		String decodedPath = null;
+		try {
+			decodedPath = URLDecoder.decode(abpath, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String path = decodedPath.substring(1, decodedPath.length()-8);
+		System.out.println(path);
+	    return path;
+	}
+	
+	
 }

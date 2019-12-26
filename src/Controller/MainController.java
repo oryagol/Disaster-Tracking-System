@@ -24,7 +24,6 @@ public class MainController {
 
 	private HashSet<Searcher> searchers = new HashSet<Searcher>();
 
-
 	// a method that do a loop on the imported list and checks if there is a match in the missing list and counts matches
 	public int syncLists() {
 		for(LostPerson lp : SysData.getInstance().getMissingSearched()) {
@@ -40,15 +39,62 @@ public class MainController {
 		for(Searcher s : searchers) {
 			sendEmail(s);
 		}
-		SysData.getInstance().getImportedmissing().addAll(JSONHandler.importedPersonsTempList);
+		for(LostPerson p : JSONHandler.importedPersonsTempList)
+			SysData.getInstance().getImportedmissing().add(p);
 		JSONHandler.importedPersonsTempList.clear();
+		JSONHandler j = new JSONHandler();
+		SysData.getInstance().saveDataBase(j.getPath()+"MPADdatabase.ser");
 		return searchers.size();
 	}
 	// a method to find a match of a person from the missing list to a person from the found list
 	public void findMatch(LostPerson found) {
+		boolean isName = false;
+		boolean isID = false;
 		found.setMatchPercent(0.0);
-		matchById(found);
-		matchByName(found);
+		isID = matchById(found);
+		isName = matchByName(found);
+		if(isID == true && isName == false)
+		{
+			double prevMatchOfSearched = SysData.getInstance().getFindById().get(found.getId()).getMatchPercent();
+			double prevMatchOfFound = found.getMatchPercent();
+			if(prevMatchOfSearched < 50.0) {
+				SysData.getInstance().getFindById().get(found.getId()).setMatchPercent(50.0);
+				SysData.getInstance().getFindById().get(found.getId()).setDateFound(Calendar.getInstance());
+				SysData.getInstance().getFindById().get(found.getId()).setFoundedBy(found.getFoundedBy());
+			}
+			if(prevMatchOfFound < 50.0) {
+				found.setMatchPercent(50.0);
+				found.setSearchBy(SysData.getInstance().getFindById().get(found.getId()).getSearchBy());
+			}
+		}
+		else if(isID == false && isName == true)
+		{
+			double prevMatchOfSearched = SysData.getInstance().getFindByName().get(found.getName()).getMatchPercent();
+			double prevMatchOfFound = found.getMatchPercent();
+			if(prevMatchOfSearched < 50) {
+				SysData.getInstance().getFindByName().get(found.getName()).setMatchPercent(50.0);
+				SysData.getInstance().getFindByName().get(found.getName()).setDateFound(Calendar.getInstance());
+				SysData.getInstance().getFindByName().get(found.getName()).setFoundedBy(found.getFoundedBy());
+			}
+			if(prevMatchOfFound < 50.0) {
+				found.setMatchPercent(50.0);
+				found.setSearchBy(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
+			}
+		}
+		else if(isID == true && isName == true)
+		{
+			double prevMatchOfSearched = SysData.getInstance().getFindByName().get(found.getName()).getMatchPercent();
+			double prevMatchOfFound = found.getMatchPercent();
+			if(prevMatchOfSearched < 100) {
+				SysData.getInstance().getFindByName().get(found.getName()).setMatchPercent(100.0);
+				SysData.getInstance().getFindByName().get(found.getName()).setDateFound(Calendar.getInstance());
+				SysData.getInstance().getFindByName().get(found.getName()).setFoundedBy(found.getFoundedBy());
+			}
+			if(prevMatchOfFound < 100.0) {
+				found.setMatchPercent(100.0);
+				found.setSearchBy(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
+			}
+		}
 		//matchByVisual(found);
 	}
 	/** unsolved feature, maybe in next version.
@@ -67,31 +113,22 @@ public class MainController {
 	}
 	 */
 
-	public void matchByName(LostPerson found) {
+	public boolean matchByName(LostPerson found) {
 		if(SysData.getInstance().getFindByName().get(found.getName()) != null)
 		{
-			System.out.println(found);
-			SysData.getInstance().getFindByName().get(found.getName()).setDateFound(Calendar.getInstance());
-			SysData.getInstance().getFindByName().get(found.getName()).setFoundedBy(found.getFoundedBy());
-			SysData.getInstance().getFindByName().get(found.getName()).setMatchPercent(SysData.getInstance().getFindByName()
-					.get(found.getName()).getMatchPercent()+50);
-			found.setMatchPercent(found.getMatchPercent()+50);
-			found.setSearchBy(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
 			searchers.add(SysData.getInstance().getFindByName().get(found.getName()).getSearchBy());
+			return true;
 		}
+		return false;
 	}
 
-	public void matchById(LostPerson found) {
+	public boolean matchById(LostPerson found) {
 		if(SysData.getInstance().getFindById().get(found.getId()) != null)
 		{
-			SysData.getInstance().getFindById().get(found.getId()).setDateFound(Calendar.getInstance());
-			SysData.getInstance().getFindById().get(found.getId()).setFoundedBy(found.getFoundedBy());
-			SysData.getInstance().getFindById().get(found.getId()).setMatchPercent(SysData.getInstance().getFindById()
-					.get(found.getId()).getMatchPercent()+50);
-			found.setMatchPercent(found.getMatchPercent()+50);
-			found.setSearchBy(SysData.getInstance().getFindById().get(found.getId()).getSearchBy());
 			searchers.add(SysData.getInstance().getFindById().get(found.getId()).getSearchBy());
+			return true;
 		}
+		return false;
 	}
 	// a method that inform the finder/searcher that we found a match
 	public boolean sendEmail(Object obj) {

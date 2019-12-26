@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import Model.JSONHandler;
@@ -14,14 +16,14 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
-	public static String fileName = "database.ser";
-	
+	public static String fileName = "MPADdatabase.ser";
+
 	public static void main(String args[]) {
-		SysData.getInstance().loadDataBase(fileName);
+		JSONHandler j = new JSONHandler();
+		SysData.getInstance().loadDataBase(j.getPath()+fileName);
 		launch(args);
-		SysData.getInstance().saveDataBase(fileName);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		MainView.stage = stage;
@@ -31,6 +33,6 @@ public class Main extends Application {
 		stage.setResizable(false);
 		stage.initStyle(StageStyle.DECORATED);
 		stage.show();
-		
+
 	}
 }

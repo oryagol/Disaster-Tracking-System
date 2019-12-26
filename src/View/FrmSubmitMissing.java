@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import Model.HairColor;
+import Model.JSONHandler;
 import Model.LostPerson;
 import Model.Searcher;
 import Model.SysData;
@@ -107,10 +108,12 @@ public class FrmSubmitMissing implements Initializable {
 		if(result.get() == ButtonType.OK) {
 			System.out.println(lp);
 			SysData.getInstance().addMissingForm(lp);
+			JSONHandler j = new JSONHandler();
+			SysData.getInstance().saveDataBase(j.getPath()+"MPADdatabase.ser");
 			emptyFields();
 			if(image != null)
 			{
-				File toFile = new File(imgURL);
+				File toFile = new File(j.getPath()+imgURL);
 				try {
 					java.nio.file.Files.copy(image.toPath(), toFile.toPath() ,StandardCopyOption.REPLACE_EXISTING);
 				} catch (IOException e1) {

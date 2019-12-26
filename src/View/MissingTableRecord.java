@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import Model.Finder;
 import Model.HairColor;
+import Model.JSONHandler;
 import javafx.scene.control.Hyperlink;
 
 // a class that describe a record in the missing person table
@@ -36,8 +37,9 @@ public class MissingTableRecord {
 			this.height = height;
 			this.weight = weight;
 			this.photo = new Hyperlink("photo");
+			JSONHandler j = new JSONHandler();
 			photo.setOnAction(evt -> {
-	            File file = new File(photoURL);
+	            File file = new File(j.getPath()+photoURL);
 	            Desktop desktop = Desktop.getDesktop();
 	            if(file.exists())
 					try {
